@@ -12,9 +12,16 @@ void setup() {
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
-    int read = analogRead(ANALOG_IN_PIN);
-    if(read % 10 == 0) {
-        Serial.println(read, BIN);
+    // observe the reading from the trimpot, and print which led should be turned on.
+    int trimpot = analogRead(ANALOG_IN_PIN);
+
+    if( trimpot < 255 ) {
+        Serial.println("LED (0, 0)");
+    } else if( trimpot < 511 ) {
+        Serial.println("LED (0, 1)");
+    } else if( trimpot < 767 ) {
+        Serial.println("LED (1, 0)");
+    } else {
+        Serial.println("LED (1, 1)");
     }
 }
