@@ -3,6 +3,10 @@
 #define ANALOG_IN_PIN 0 //A0
 #define V_OUT_PIN 13 // When configured with digitalWrite, this pin will output 5V or 3V
 
+// for testing a concept
+#define TEST_LED_V 2
+#define TEST_LED_GND 3
+
 #define ROW0 5
 #define ROW1 4
 #define COL0 7
@@ -11,8 +15,8 @@
 void reset() {
     digitalWrite(COL0, LOW);
     digitalWrite(COL1, LOW);
-    digitalWrite(ROW0, LOW);
-    digitalWrite(ROW0, LOW);
+    digitalWrite(ROW0, HIGH);
+    digitalWrite(ROW1, HIGH);
 }
 
 void setup() {
@@ -27,9 +31,17 @@ void setup() {
     pinMode(COL1, OUTPUT);
     pinMode(ROW0, OUTPUT);
     pinMode(ROW1, OUTPUT);
+
+    // Set up the test led
+    pinMode(TEST_LED_V, OUTPUT);
+    pinMode(TEST_LED_GND, OUTPUT);
 }
 
 void loop() {
+    // turn off the LED?, does indeed turn off the led
+    digitalWrite(TEST_LED_V, HIGH);
+    digitalWrite(TEST_LED_GND, HIGH);
+
     // observe the reading from the trimpot, and print which led should be turned on.
     int trimpot = analogRead(ANALOG_IN_PIN);
 
