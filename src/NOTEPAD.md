@@ -1,4 +1,4 @@
-# September 21, 2019
+# September 21, 2018
 Today I was able to wire the trim pot so it was able to produce 1024 measurements. I selected 4 of those inputs to represent different locations in a matrix.
 When setting up the LED matrix, I wired it correctly, but figuring out the logic took a litle bit of time. I was wondering how to select a line to ground. Instead of doing this, you set the line to HIGH to "disconnect it from GND." So in an example where pin (0, 1) must be lit, the following must be the configuration:
 - ROW0 set to LOW
