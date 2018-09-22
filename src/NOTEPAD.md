@@ -5,4 +5,5 @@ When setting up the LED matrix, I wired it correctly, but figuring out the logic
 - ROW1 set to HIGH
 - COL0 set to LOW
 - COL1 set to HIGH
+
 Fun fact, use LED's that are only biased in one direction. It took me a long time to figure out the above solution because of the LED's I was using. These would be red when power was supplied from one direction, and green when it was applied from the other. Clearly very confusing output with the above solution.
