@@ -18,3 +18,16 @@ I experimented with the keyboard library today. It requires a 32u4 chip, so I'm 
 - Order a momentary switch
 - Order a plate mount variable resistor (breadboard compatibility is a plus).
 - Research how I'm going to generate string altering functions.
+
+# September 25, 2018
+I ordered this [writer/reader](https://www.amazon.com/HiLetgo-RFID-Kit-Arduino-Raspberry/dp/B01CSTW0IA/ref=pd_lutyp_cxhsh_3_2?_encoding=UTF8&pd_rd_i=B01CSTW0IA&pd_rd_r=4f88c399-b6b0-4f1e-95a5-2eda6b56cb4c&pd_rd_w=jalA7&pd_rd_wg=jgNqi&psc=1&refRID=ZPB2H49Z4D3BR6D9V1WS). We'll see what we can do with it when it gets here.
+I was thinking about how to organize my functions, I think I'll make some custom libraries. Here were a few of the functions I was thinking of...
+- setNumRows(int numRows)
+- setNumColumns(int numColumns)
+- turnOnLED(int row, int col)
+- setSelection(int row, int col, String account) Tie the name of an account to a position in the matrix
+    - I'm thinking I may need to implement a dictionary for this.
+- resetMatrix(void)
+- sendPassword(String password) A wrapper for Keyboard.print(String str)
+
+It just hit me that I should really think through a matrix class. Since my matrix has specific use cases, it should really have a specific class. I'll do some more thinking on this later today.
