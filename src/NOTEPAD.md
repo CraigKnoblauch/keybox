@@ -31,3 +31,12 @@ I was thinking about how to organize my functions, I think I'll make some custom
 - sendPassword(String password) A wrapper for Keyboard.print(String str)
 
 It just hit me that I should really think through a matrix class. Since my matrix has specific use cases, it should really have a specific class. I'll do some more thinking on this later today.
+
+## Later today
+- I started on the TrimPot class. When testing I have some kind of bug (issue 2)
+- @synackd suggested a useful feature today (issue 1)
+- I began thinking about how to generate string modification functions today (these are just late night thoughts):
+    - Have a general format 
+    - Randomly select one of the arithmetic operators to use
+    - Modify a random character or append a modification of a random variable
+    
