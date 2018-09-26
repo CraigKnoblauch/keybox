@@ -1,22 +1,35 @@
 #include <Arduino.h>
 #include <Keyboard.h>
+#include <TrimPot.h>
 
-#define PINOUT 2
-#define PININ  3
+#define CW_PIN 6
+#define WIPER_PIN 36
+
+TrimPot trimpot = TrimPot(WIPER_PIN, CW_PIN); // specify how to setup the trimpot
 
 void setup() {
-    Keyboard.begin();
+    trimpot.begin(3); //specify number of selections
     Serial.begin(9600);
-    pinMode(PINOUT, OUTPUT);
-    pinMode(PININ, INPUT);
-    digitalWrite(PINOUT, HIGH);
+
 }
 
 void loop() {
-    if( digitalRead(PININ) ) {
-        Keyboard.print("Pressed");
-    } else {
-        Serial.println("NOT Pressed");
+    int selection = trimpot.getSelection();
+    switch(selection) {
+        case 0:
+            Serial.println("Selection 0");
+            break;
+
+        case 1:
+            Serial.println("Seleciton 1");
+            break;
+
+        case 2:
+            Serial.println("Selection 2");
+            break;
+
+        default:
+            break;
     }
-    delay(1000);
+    delay(500);
 }
