@@ -3,7 +3,7 @@
 #include <TrimPot.h>
 
 #define CW_PIN 6
-#define WIPER_PIN 36
+#define WIPER_PIN 0
 
 TrimPot trimpot = TrimPot(WIPER_PIN, CW_PIN); // specify how to setup the trimpot
 
