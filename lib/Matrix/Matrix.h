@@ -1,6 +1,10 @@
 #ifndef _matrix_h_
 #define _matrix_h_
 
+#define FIVE_VOLTS 255
+#define THREE_THREE_VOLTS 168
+#define ZERO_VOLTS 0
+
 /**
  * The purpose of the class is to simplify working with an LED matrix.
  * This will help not only for debugging the matrix, but also when we're
