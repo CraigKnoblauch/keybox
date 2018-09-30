@@ -33,7 +33,7 @@ int Matrix::begin() {
 
     // drive all columns low
     for(int i = 0; i < this->num_cols; i++) {
-        digitalWrite( (this->col_pins[i]), LOW );
+        digitalWrite( (this->col_pins)[i], LOW );
     }
 
     return status;
@@ -48,7 +48,7 @@ int Matrix::setLED(int row, int col) {
 
     // Reset the matrix, then drive row low, and column high
     status = Matrix::reset();
-    digitalWrite( (this->row_pins[row]), LOW );
-    digitalWrite( (this->col_pins[col]), HIGH );
+    digitalWrite( (this->row_pins)[row], LOW );
+    digitalWrite( (this->col_pins)[col], HIGH );
 
 }
