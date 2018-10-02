@@ -31,3 +31,17 @@ I was thinking about how to organize my functions, I think I'll make some custom
 - sendPassword(String password) A wrapper for Keyboard.print(String str)
 
 It just hit me that I should really think through a matrix class. Since my matrix has specific use cases, it should really have a specific class. I'll do some more thinking on this later today.
+
+## Later today
+- I started on the TrimPot class. When testing I have some kind of bug (issue 2)
+- @synackd suggested a useful feature today (issue 1)
+- I began thinking about how to generate string modification functions today (these are just late night thoughts):
+    - Have a general format
+    - Randomly select one of the arithmetic operators to use
+    - Modify a random character or append a modification of a random variable
+
+# September 26, 2018
+Ok, I'm calling it. The breadboard wins this day. I rewired the matrix so it's actually a matrix, and tried my hand at programming it. After weird errors that made me question whether the board was defective I proved that I could light up each individual LED, one by one. Doing so in a loop however, has been a massive challenge. The behavior I have right now is shown ![here][broken-matrix-1.gif].
+As an interesting not, instead of doing the high for columns, low for rows approach I was doing before. I decided to do this approach:
+1. 168 (3.3V) for column you want, 0 for column(s) you don't
+2. 0 for row you want, 255 (5.5V) for row(s) you don't
