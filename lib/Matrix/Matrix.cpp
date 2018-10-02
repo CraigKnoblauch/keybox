@@ -28,27 +28,39 @@ int Matrix::begin() {
 
     // drive all rows high
     for(int i = 0; i < this->num_rows; i++) {
-        analogWrite( (this->row_pins)[i], FIVE_VOLTS );
+        digitalWrite( (this->row_pins)[i], HIGH );
     }
 
     // drive all columns low
     for(int i = 0; i < this->num_cols; i++) {
-        analogWrite( (this->col_pins)[i], ZERO_VOLTS );
+        digitalWrite( (this->col_pins)[i], LOW );
     }
 
     return status;
 }
 
 int Matrix::reset() {
-    return Matrix::begin();
+    return begin();
 }
 
 int Matrix::setLED(int row, int col) {
     int status = 0;
 
     // Reset the matrix, then drive row low, and column high
-    status = Matrix::reset();
-    analogWrite( (this->row_pins)[row], ZERO_VOLTS );
-    analogWrite( (this->col_pins)[col], THREE_THREE_VOLTS );
+    status = reset();
+    digitalWrite( (this->row_pins)[row], LOW );
+    digitalWrite( (this->col_pins)[col], HIGH );
+
+    return status;
+}
+
+void Matrix::loopTest(int delay_ms) {
+
+    for(int i = 0; i < this->num_rows; i++) {
+        for(int j = 0; j < this->num_cols; j++) {
+            setLED(i, j);
+            delay(delay_ms);
+        }
+    }
 
 }
