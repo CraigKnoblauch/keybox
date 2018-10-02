@@ -56,7 +56,7 @@ int row[2] = {8, 7};
 
 Matrix matrix = Matrix( sizeof(row)/4, row, sizeof(col)/4, col );
 ```
-For the record, the above does not work, but the below does...  *¯\_(ツ)_/¯*
+For the record, the above does not work, but the below does...  *¯\\_(ツ)_/¯*
 ```
 int col[4] = {12, 11, 10, 9};
 int row[2] = {8, 7};
