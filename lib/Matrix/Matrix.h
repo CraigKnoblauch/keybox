@@ -22,6 +22,7 @@ class Matrix {
         Matrix(int num_rows, int* row_pins, int num_cols, int* col_pins);
         int begin(); /** Initialize the matrix. Drive all rows high, and all columns low */
         int setLED(int row, int col); /** Turn on the specified LED */
+        void loopTest(int delay_ms); /** Loop through all the LED's and test if the matrix is working. Delay between each led 'delay_ms' miliseconds */
 };
 
 #endif
