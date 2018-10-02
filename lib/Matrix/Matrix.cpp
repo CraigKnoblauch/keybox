@@ -40,15 +40,16 @@ int Matrix::begin() {
 }
 
 int Matrix::reset() {
-    return Matrix::begin();
+    return begin();
 }
 
 int Matrix::setLED(int row, int col) {
     int status = 0;
 
     // Reset the matrix, then drive row low, and column high
-    status = Matrix::reset();
+    status = reset();
     analogWrite( (this->row_pins)[row], ZERO_VOLTS );
     analogWrite( (this->col_pins)[col], THREE_THREE_VOLTS );
 
+    return status;
 }
