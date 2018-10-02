@@ -63,7 +63,7 @@ int row[2] = {8, 7};
 
 Matrix matrix = Matrix( 2, row, 4, col );
 ```
-## Later today, addressing the trimpot ((Issue 2)[https://github.com/CraigKnoblauch/keybox/issues/2])
+## Later today, addressing the trimpot ([Issue 2](https://github.com/CraigKnoblauch/keybox/issues/2))
 I setup the trimpot on the breadboard. I connected cw to pin 6, the wiper to A0, and ccw to ground. I wrote the cw high and observed the trimpot working with a multimeter. I then wrote a simple script that printed the trimpot's voltage readings to the serial monitor. This checked out. Now, I had confirmed that the trimpot was working and the arduino was set up correctly. The error had to be in `TrimPot::getSelection()`. The old solution, claimed that every trimpot setting was selection 0. I decided to rework the algorithm. This is what I came up with (taken right from TrimPot.cpp):
 ```
 int TrimPot::getSelection() {
