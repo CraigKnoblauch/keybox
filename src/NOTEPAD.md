@@ -48,6 +48,7 @@ As an interesting not, instead of doing the high for columns, low for rows appro
 
 # October 1, 2018
 Per the advice of Dr. Meuth, I got rid of my scope resolvers inside Matrix.cpp. This was probably causing some errors. This did not solve the problem with the matrix however. I noticed that when I called my Matrix constructor, I was using `sizeof(array)` rather than `sizeof(array)/4`. I inspected the constructor and saw that providing too large a number for the rows or columns could potentially cause issues. When I fixed this mistake, I observed different behavior, but by no means correct behavior. "SCREW IT! I'll hardcode the values of row size and column size."... and then it worked.
+
 I have no idea why hardcoding the values worked. If we look at the following code, I don't see why `sizeof(row)/4` would not return 2, and likewise why `sizeof(col)/4` would not return 4 (I tested that hypothesis in another program and proved it):
 ```
 int col[4] = {12, 11, 10, 9};
