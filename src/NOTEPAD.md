@@ -63,3 +63,36 @@ int row[2] = {8, 7};
 
 Matrix matrix = Matrix( 2, row, 4, col );
 ```
+## Later today, addressing the trimpot ((Issue 2)[https://github.com/CraigKnoblauch/keybox/issues/2])
+I setup the trimpot on the breadboard. I connected cw to pin 6, the wiper to A0, and ccw to ground. I wrote the cw high and observed the trimpot working with a multimeter. I then wrote a simple script that printed the trimpot's voltage readings to the serial monitor. This checked out. Now, I had confirmed that the trimpot was working and the arduino was set up correctly. The error had to be in `TrimPot::getSelection()`. The old solution, claimed that every trimpot setting was selection 0. I decided to rework the algorithm. This is what I came up with (taken right from TrimPot.cpp):
+```
+int TrimPot::getSelection() {
+    int val = analogRead(wiper);
+
+    /**
+    * For some amount of selections N, the amount of possible values per selection,
+    * m, is equal to 1024/N (I've decided to take the floor for now until I figure out
+    * how to distribute the remainders).
+    * Given this arrangement, the values are distributed like so:
+    *
+    * 0 to m-1, m to 2m-1, ..., (N-1)m to Nm - 1
+    */
+
+    int m = 1024/num_selections;
+
+    // if none of the selections are matched, it's likely the remainders have accumulated
+    // such that the val is not in the range, thus it will not be set in the loop, but should
+    // still be the last selection
+    int selection = num_selections - 1;
+
+    for(int i = 1; i <= num_selections; i++) {
+        if( val >= ( (i-1)*m ) && val <= ( i*m - 1 ) ) {
+            selection = i - 1;
+            break;
+        }
+    }
+
+    return selection;
+}
+```
+This solution also gives claims that the selection is always zero. I think to solve this one, and to make my life easier for the coming features, I'm going to have to transfer over to eclipse. I need a debugger.
