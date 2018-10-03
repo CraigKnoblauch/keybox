@@ -1,16 +1,18 @@
-#include <Arduino.h>
 #include "TrimPot.h"
 
 TrimPot::TrimPot(int wiper, int cw) {
+    this->wiper = wiper;
+    this->cw = cw;
+
     pinMode(wiper, INPUT);
     pinMode(cw, OUTPUT);
 }
 
-int TrimPot::begin(int num_selections) {
+int TrimPot::begin(int n) {
     int status = 0;
 
     digitalWrite(cw, HIGH);
-    status = setNumSelections(num_selections);
+    status = setNumSelections(n);
 
     return status;
 }
@@ -53,4 +55,22 @@ int TrimPot::setNumSelections(int n) {
     }
 
     return status;
+}
+
+String TrimPot::debug() {
+    String info;
+
+    info = String( "Num Selections = " );
+    info.concat(num_selections);
+    info.concat("\n");
+
+    info.concat("CW Pin: ");
+    info.concat(cw);
+    info.concat("\n");
+
+    info.concat("Wiper Pin: ");
+    info.concat(wiper);
+    info.concat("\n");
+
+    return info;
 }
