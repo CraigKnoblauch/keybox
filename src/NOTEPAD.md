@@ -96,3 +96,6 @@ int TrimPot::getSelection() {
 }
 ```
 This solution also gives claims that the selection is always zero. I think to solve this one, and to make my life easier for the coming features, I'm going to have to transfer over to eclipse. I need a debugger.
+
+# October 2, 2018
+Well I feel dumb, I never set TrimPot's wiper or cw variables. So when `analogRead` was called in `TrimPot::getSelection()`, it had no pin to call. I fixed that, and added a debug function for good measure. I'll integrate these changes into master.
