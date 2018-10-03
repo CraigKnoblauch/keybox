@@ -99,3 +99,5 @@ This solution also gives claims that the selection is always zero. I think to so
 
 # October 2, 2018
 Well I feel dumb, I never set TrimPot's wiper or cw variables. So when `analogRead` was called in `TrimPot::getSelection()`, it had no pin to call. I fixed that, and added a debug function for good measure. I'll integrate these changes into master.
+
+To close out the day, I wrote a little something in main that allowed me to scroll through the LEDs with the trimpot. <INSERT GIF HERE>
