@@ -1,6 +1,8 @@
 #ifndef _trimpot_h_
 #define _trimpot_h_
 
+#include <Arduino.h>
+
 /**
 * The purpose of this responsibility of this class includes
 * Managing the outputs of certain positions of the trim pot
@@ -18,6 +20,7 @@ public:
     int getValue(); /** Wrapper for analogRead(wiper) */
     int setNumSelections(int n); /** Sets the num_selections variable. Returns 0 if the number is in range, -1 otherwise */
     int TrimPot::getSelection();
+    String TrimPot::debug(); /** Print information about this object */
 
 };
 
