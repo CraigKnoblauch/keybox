@@ -13,26 +13,51 @@ Matrix matrix = Matrix( 2, row, 4, col );
 TrimPot trimpot = TrimPot(WIPER, CW);
 
 void setup() {
+    
     matrix.begin();
-    trimpot.begin(3);
+    trimpot.begin(8);
     Serial.begin(9600);
 
-    // Verify the trimpot is working
-    // Serial.begin(9600);
-    // pinMode(CW, OUTPUT);
-    // pinMode(WIPER, INPUT);
-    // digitalWrite(CW, HIGH);
 }
 
 void loop() {
-    // Loop through all the LED's
-    // matrix.loopTest(1000);
 
-    // int trim_val = analogRead(WIPER);
-    // Serial.println(trim_val*0.004882);
-    // delay(50);
+    switch( trimpot.getSelection() ) {
+        case 0:
+            matrix.setLED(0, 0);
+            break;
 
-    Serial.println(trimpot.getSelection());
-    delay(50);
+        case 1:
+            matrix.setLED(0, 1);
+            break;
+
+        case 2:
+            matrix.setLED(0, 2);
+            break;
+
+        case 3:
+            matrix.setLED(0, 3);
+            break;
+
+        case 4:
+            matrix.setLED(1, 0);
+            break;
+
+        case 5:
+            matrix.setLED(1, 1);
+            break;
+
+        case 6:
+            matrix.setLED(1, 2);
+            break;
+
+        case 7:
+            matrix.setLED(1, 3);
+            break;
+
+        default:
+            break;
+
+    }
 
 }
